@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Food = require("../models/Food");
 const { json } = require("express");
+const User = require("../models/User");
 
 //all foods
 router.get("/", (req, res) => {
@@ -74,6 +75,22 @@ router.delete("/name/:name", (req, res) => {
   Food.remove({ name: req.params.name }, (error, food) => {
     if (error) console.log(error);
     else res.json(food);
+  });
+});
+
+//make new user
+router.post("/user", (req, res) => {
+  User.create(req.body, { new: true }, (error, user) => {
+    if (error) console.log(error);
+    else res.json(user);
+  });
+});
+
+//view all users
+router.get("/user/list", (req, res) => {
+  User.find({}, (error, users) => {
+    if (error) console.log(error);
+    else res.json(users);
   });
 });
 
