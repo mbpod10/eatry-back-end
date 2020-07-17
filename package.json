@@ -1,0 +1,28 @@
+{
+  "name": "eatry-back-end",
+  "version": "1.0.0",
+  "description": "back end repo for Eatr.y - project 3 at GA SEI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbpod10/eatry-back-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbpod10/eatry-back-end/issues"
+  },
+  "homepage": "https://github.com/mbpod10/eatry-back-end#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.24",
+    "morgan": "^1.10.0"
+  }
+}
