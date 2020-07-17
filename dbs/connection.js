@@ -4,11 +4,8 @@ let MONGODB_URI = "";
 if (process.env.NODE_ENV === "production") {
   MONGODB_URI = process.env.DB_URL;
 } else {
-  //MONGODB_URI = "mongodb://127.0.0.1:27017/foods_db";
   MONGODB_URI = "mongodb://localhost/foods_db";
 }
-
-//let MONGODB_URI = "mongodb://127.0.0.1:27017/songs_db";
 
 mongoose
   .connect(MONGODB_URI, {
