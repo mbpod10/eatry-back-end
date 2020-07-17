@@ -3,6 +3,7 @@ const mongoose = require("../dbs/connection");
 const FoodSchema = new mongoose.Schema(
   {
     name: String,
+    isLogged: { type: Boolean, default: false },
     calories: Number,
     Servings: Number,
     totalFat: Number,
