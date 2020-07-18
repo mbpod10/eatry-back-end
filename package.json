@@ -1,6 +1,9 @@
 {
   "name": "eatry-back-end",
   "version": "1.0.0",
+  "engines": {
+    "npm": "6.14.5"
+  },
   "description": "back end repo for Eatr.y - project 3 at GA SEI",
   "main": "server.js",
   "scripts": {
