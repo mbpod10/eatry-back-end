@@ -78,6 +78,14 @@ router.delete("/name/:name", (req, res) => {
   });
 });
 
+//get logged
+router.get("/logged", (req, res) => {
+  Food.find({ isLogged: true }, (error, foods) => {
+    if (error) console.log(error);
+    else res.json(foods);
+  });
+});
+
 //make new user
 router.post("/user", (req, res) => {
   User.create(req.body, { new: true }, (error, user) => {
