@@ -12,6 +12,14 @@ router.get("/", (req, res) => {
   });
 });
 
+//get logged
+router.get("/logged", (req, res) => {
+  Food.find({ isLogged: true }, (error, foods) => {
+    if (error) console.log(error);
+    else res.json(foods);
+  });
+});
+
 //find by id
 router.get("/:id", (req, res) => {
   Food.findById(req.params.id, (error, food) => {
@@ -54,6 +62,32 @@ router.put("/name/:name", (req, res) => {
   );
 });
 
+//edit to true from false
+router.put("/change/:id", (req, res) => {
+  Food.findOneAndUpdate(
+    { _id: req.params.id },
+    { isLogged: true },
+    { new: true },
+    (error, song) => {
+      if (error) console.log(error);
+      else res.json(song);
+    }
+  );
+});
+
+//change all islogged to false
+router.put("/logged/nlogged", (req, res) => {
+  Food.updateMany(
+    { isLogged: true },
+    { isLogged: false },
+    { new: true },
+    (error, food) => {
+      if (error) console.log(error);
+      else res.json(food);
+    }
+  );
+});
+
 //create a new food
 router.post("/", (req, res) => {
   Food.create(req.body, (error, food) => {
@@ -75,14 +109,6 @@ router.delete("/name/:name", (req, res) => {
   Food.remove({ name: req.params.name }, (error, food) => {
     if (error) console.log(error);
     else res.json(food);
-  });
-});
-
-//get logged
-router.get("/logged", (req, res) => {
-  Food.find({ isLogged: true }, (error, foods) => {
-    if (error) console.log(error);
-    else res.json(foods);
   });
 });
 
