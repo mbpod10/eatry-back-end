@@ -3,6 +3,7 @@ const router = express.Router();
 const Food = require("../models/Food");
 //const { json } = require("express");
 const User = require("../models/User");
+const { route } = require("./userRoutes");
 
 //all foods
 router.get("/", (req, res) => {
@@ -96,6 +97,14 @@ router.delete("/name/:name", (req, res) => {
   Food.remove({ name: req.params.name }, (error, food) => {
     if (error) console.log(error);
     else res.json(food);
+  });
+});
+
+//delete many
+router.delete("/", (req, res) => {
+  Food.deleteMany({}, (error, foods) => {
+    if (error) console.log(error);
+    else res.json(foods);
   });
 });
 
