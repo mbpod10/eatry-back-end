@@ -101,6 +101,7 @@ router.get("/api", (req, res) => {
   res.json({ message: "Hello" });
 });
 
+// add to food array by user id
 router.put("/add/food/:id", (req, res) => {
   const food = new Food(req.body);
   food.save((error) => {
@@ -121,6 +122,7 @@ router.put("/add/food/:id", (req, res) => {
   });
 });
 
+// remove all foods in user array
 router.put("/:id/remove", (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
@@ -135,6 +137,20 @@ router.put("/:id/remove", (req, res) => {
   );
 });
 
+//remove one food from user foods array
+router.put("/:id/removeone/:foodid", (req, res) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { foods: req.params.foodid } },
+    { new: true },
+    (error, user) => {
+      if (error) console.log(error);
+      else res.json(user);
+    }
+  );
+});
+
+//populate foods by username
 router.get("/:username", (req, res) => {
   User.find({ username: req.params.username })
     .populate("foods")
