@@ -12,7 +12,7 @@ const FoodSchema = new mongoose.Schema(
     cholesterol: Number,
     sodium: Number,
     potassium: Number,
-    link: String,
+    Link: String,
   },
   { timestamps: true }
 );
